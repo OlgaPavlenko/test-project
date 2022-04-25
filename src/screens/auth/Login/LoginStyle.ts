@@ -24,6 +24,11 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: 'DMMono-Regular',
   },
+  singUpOption: {
+    marginBottom: 70,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   btn: {
     borderRadius: 4,
     borderWidth: 1,
@@ -42,8 +47,20 @@ export const styles = StyleSheet.create({
       },
     }),
   },
+  btnSkip: {
+    height: 40,
+    marginTop: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   btnTitle: {
     color: Platform.OS === 'ios' ? '#4169e1' : '#f0f8ff',
+    fontSize: 18,
+    fontFamily: 'DMMono-Regular',
+    textTransform: 'uppercase',
+  },
+  btnSkipText: {
+    color: Platform.OS === 'ios' ? 'black' : 'black',
     fontSize: 18,
     fontFamily: 'DMMono-Regular',
     textTransform: 'uppercase',
@@ -62,5 +79,10 @@ export const styles = StyleSheet.create({
   headerText: {
     fontSize: 40,
     color: '#000000',
+  },
+  link: {
+    marginTop: 17,
+    color: '#000000',
+    fontWeight: 'bold',
   },
 });

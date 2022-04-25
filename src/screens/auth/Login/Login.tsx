@@ -12,14 +12,19 @@ import {
 
 import { TextInput } from 'react-native-paper';
 import { styles } from './LoginStyle';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../RootStackParams';
 
 const initialState = {
   email: '',
   password: '',
 };
 
-export function Login() {
-  // console.log(Platform.OS);
+type authScreenProp = StackNavigationProp<RootStackParamList, 'Login'>;
+
+export const Login = () => {
+  console.log(Platform.OS);
   const [isShowKeyboard, setIsShowKeyboard] = useState(true);
   const [state, setState] = useState(initialState);
   const [passwordVisible, setPasswordVisible] = useState(true);
@@ -27,6 +32,8 @@ export function Login() {
   const [dimensions, setDimensions] = useState(
     Dimensions.get('window').width - 20 * 2
   );
+
+  const navigation = useNavigation<authScreenProp>();
 
   useEffect(() => {
     const onChange = () => {
@@ -107,6 +114,14 @@ export function Login() {
                 autoComplete={undefined}
               />
             </View>
+            <View style={styles.singUpOption}>
+              <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+                <Text style={styles.link}>Forgot password?</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+                <Text style={styles.link}>Sing Up</Text>
+              </TouchableOpacity>
+            </View>
             <TouchableOpacity
               activeOpacity={0.8}
               style={styles.btn}
@@ -114,9 +129,16 @@ export function Login() {
             >
               <Text style={styles.btnTitle}>log in</Text>
             </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.btnSkip}
+              activeOpacity={0.8}
+              onPress={() => navigation.navigate('Home')}
+            >
+              <Text style={styles.btnSkipText}>skip</Text>
+            </TouchableOpacity>
           </View>
         </KeyboardAvoidingView>
       </View>
     </TouchableWithoutFeedback>
   );
-}
+};
